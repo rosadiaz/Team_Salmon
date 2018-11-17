@@ -1,4 +1,4 @@
 class Result < ApplicationRecord
-    belongs_to :user
-    belongs_to :quiz
+    belongs_to :user dependent: :destroy
+    belongs_to :quiz dependent: :nullify
 end
