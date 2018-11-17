@@ -16,11 +16,12 @@ class QuizzesController < ApplicationController
     end
   end
 
-  def show    
+  def show
+    # render json: params
   end
   
   def index
-    @quizzes = Quiz.all.order(:title)
+    @quizzes = Quiz.all.order(created_at: :desc)
   end
 
   def edit
