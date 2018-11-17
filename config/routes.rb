@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   root({ to: 'home#index' })
+  resources :quizzes 
+  resources :questions 
 
 end

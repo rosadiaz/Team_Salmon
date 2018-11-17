@@ -25,4 +25,22 @@ ActiveRecord::Schema.define(version: 2018_11_17_013951) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.string "option0"
+    t.string "option1"
+    t.string "option2"
+    t.string "option3"
+    t.integer "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
