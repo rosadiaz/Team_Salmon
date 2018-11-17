@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     before_action :find_quiz, only: [:create]
-    before_action :find_question only: [:destroy]
+    before_action :find_question, only: [:destroy]
 
     def new
         @question = Question.new
