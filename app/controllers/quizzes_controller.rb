@@ -21,6 +21,10 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all.order(:title)
   end
 
+  def edit
+    @quiz = Quiz.find params[:id]
+  end
+
   private
 
   def quiz_params
