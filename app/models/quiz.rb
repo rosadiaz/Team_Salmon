@@ -1,5 +1,6 @@
 class Quiz < ApplicationRecord
-  has_many :results
+  has_many :results, dependent: :nullify
+  has_many :quiz_taker, through: :results, source: :user
   belongs_to :user
   has_many :questions, dependent: :destroy
 
