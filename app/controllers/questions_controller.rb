@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
+    before_action :find_question, only: [:show, :edit, :update, :destroy]
     before_action :find_quiz, only: [:new, :create]
-    before_action :find_question, only: [:destroy]
 
     def new
         @question = Question.new
@@ -21,26 +21,33 @@ class QuestionsController < ApplicationController
         end
     end
 
+    def show
+        render :show
+    end
+
     def edit
     end
 
     def update
         if @question.update question_params
-            # REFRESH THE DOM TO SHOW CHANGES
+            redirect_to question_path(@question.id)
         else
-            # FLASH ERROR
+            render :edit
         end
     end
 
     def destroy
         @question.destroy
-        # AFTER DESTROY REFRESH DOM TO SHOW DELETION
+        # AFTER REDIRECT TO SOMEWHERE
     end
 
     private
-    
+    def question_params
+        params.require(:question).permit(:title, :option0, :option1, :option2, :option3, :correct_answer)
+    end
+
     def find_quiz
-        @quiz = Quiz.find params[:quiz_id]
+        # @quiz = Quiz.find params[:quiz_id]
     end
 
     def find_question
