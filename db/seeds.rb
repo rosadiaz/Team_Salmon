@@ -11,7 +11,7 @@ super_user = User.create(
   first_name: "Test",
   last_name: "User",
   email: "test@user.com",
-  password_digest: PASSWORD,
+  password: PASSWORD,
   admin: true
 )
 
@@ -38,7 +38,6 @@ NUM_OF_CREATES.times do
   )
 
   quiz.quiz_taker = users.shuffle.slice(0, rand(users.count))
-  quiz.user.quiz_taken = Quiz.all.shuffle.slice(0, rand(Quiz.all.count))
 
   if quiz.valid?
     rand(0..11).times do
