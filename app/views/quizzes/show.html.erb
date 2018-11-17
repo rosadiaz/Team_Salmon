@@ -8,10 +8,32 @@
     <%= link_to('Edit', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
     <%= link_to('Delete', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary") %>
   </div>
+  <br>
 <% end %>
 
 <div class="mx-2">
-  <% @quiz.questions.each do |q| %>
-    <h2><%= q.question %></h2>
+  <%= form_for :q do |form| %>
+    <% @quiz.questions.each do |q| %>
+      <p><strong><%= q.question %></strong></p>
+      <% if can? :crud, @quiz %>
+        <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
+        <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
+      <% end %>
+        <div class="form-group" id='answer-options'>
+          <%= form.radio_button :option0, 0, class: "form-control" %> A: <%= q.option0 %>
+          <%= form.radio_button :option1, 1, class: "form-control" %> B: <%= q.option1 %>
+          <%= form.radio_button :option2, 2, class: "form-control" %> C: <%= q.option2 %>
+          <%= form.radio_button :option3, 3, class: "form-control" %> D: <%= q.option3 %>
+        </div>
+    <% end %>
+    <% if can? :take, @quiz %>
+      <%= form.submit "Submit Answers", class: 'btn btn-primary'%>
+    <% end %>
   <% end %>
 </div>
+
+<% if can? :crud, @quiz %>
+  <div class='mx-2'>
+    <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
+  </div>
+<% end %>
