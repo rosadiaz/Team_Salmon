@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TeamSalmon</title>
+    <title>QUIZZ-BUZZ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,28 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+        <div class="navbar-collapse collapse w-100 d-flex justify-content-begin">
+          <%= link_to("QUIZZ-BUZZ", quizzes_path, class: "navbar-brand text-primary") %>
+        </div>
+        <div class="w-100 collapse navbar-collapse d-flex justify-content-end">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to("Create New Quiz", new_quiz_path, class: "mr-4")%>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
     <%= yield %>
   </body>
 </html>
