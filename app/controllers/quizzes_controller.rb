@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :find_quiz, only: [:show, :edit, :update, :delete]
+  before_action :find_quiz, only: [:show, :edit, :update, :destroy]
 
   def new
     @quiz = Quiz.new
@@ -32,7 +32,10 @@ class QuizzesController < ApplicationController
     end
   end
 
-  
+  def destroy
+    @quiz.destroy
+    redirect_to quizzes_path
+  end
 
   private
 
