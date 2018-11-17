@@ -60,6 +60,7 @@ results = Result.all
 
 results.each do |r|
   r.score = rand(0..11)
+  r.save
 end
 
 
