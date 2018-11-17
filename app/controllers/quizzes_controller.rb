@@ -17,6 +17,9 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find params[:id]
   end
   
+  def index
+    @quizzes = Quiz.all.order(:title)
+  end
 
   private
 

@@ -1,0 +1,8 @@
+<h1>Quizzes</h1>
+<main>
+  <% @quizzes.each do |q| %>
+    <p>
+      <%= link_to q.title, quiz_path(q) %>
+    </p>
+  <% end %>
+</main>
