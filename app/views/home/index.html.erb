@@ -1,3 +1,4 @@
 <h1> Welcome to Quizzle, my fizzle!</h1>
-
-<%= current_user.first_name%>
+<% if session[:user_id] %>
+  <p><%= current_user.first_name%></p>
+<% end %> 
