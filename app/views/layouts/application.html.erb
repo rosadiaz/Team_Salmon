@@ -20,6 +20,9 @@
             <li class="nav-item">
               <%= link_to("Create New Quiz", new_quiz_path, class: "mr-4")%>
             </li>
+            <li class="nav-item">
+              <%= link_to("Sign out", sessions_path, method: :delete, class: "mr-4")%>
+            </li>
           </ul>
         </div>
       </nav>
