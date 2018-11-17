@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    before_action :find_user, only: [:show, :edit, :update, :destroy]
+
+
     def new
         @user = User.new
       end
@@ -13,6 +16,27 @@ class UsersController < ApplicationController
         end
     end
 
+    def show 
+
+
+    end 
+
+    def update
+
+        if @user.update user_params
+            redirect_to user_path(@user.id)
+          else
+            render :edit
+          end
+
+    end
+
+
+    def destroy
+        @user.destroy 
+        redirect_to rooth_path, notice: 'See you next time!'
+    end 
+
     private
 
   def user_params
@@ -21,6 +45,10 @@ class UsersController < ApplicationController
                                  :email,
                                  :password,
                                  :password_confirmation)
+  end
+
+  def find_user
+    @user = current_user
   end
 
 end
