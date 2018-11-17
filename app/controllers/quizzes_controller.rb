@@ -7,11 +7,16 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new quiz_params
     if @quiz.save
-      redirect_to :show
+      redirect_to quiz_path(@quiz.id)
     else
       render :new
     end
   end
+
+  def show
+    @quiz = Quiz.find params[:id]
+  end
+  
 
   private
 
