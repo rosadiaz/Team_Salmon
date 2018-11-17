@@ -1,5 +1,5 @@
-<h1>Quizzes</h1>
-<main>
+<h1 class="mx-2">Quizzes</h1>
+<main class="mx-2">
   <% @quizzes.each do |q| %>
     <p>
       <%= link_to q.title, quiz_path(q) %>
