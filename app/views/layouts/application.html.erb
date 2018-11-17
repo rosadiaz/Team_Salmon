@@ -4,7 +4,8 @@
     <title>QUIZZ-BUZZ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -55,6 +56,10 @@
           </button>
         </div>
       <% end %>
-    <%= yield %>
+
+    <main class= "m-4">
+      <%= yield %>
+    </main> 
+    
   </body>
 </html>
