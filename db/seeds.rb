@@ -1,6 +1,13 @@
+Result.delete_all
 Question.delete_all
 Quiz.delete_all
 User.delete_all
+
+25.times do
+  Result.create(
+    score: rand(0..11)
+  )
+end
 
 PASSWORD = "superadmin"
 NUM_OF_CREATES = 100
@@ -36,6 +43,9 @@ NUM_OF_CREATES.times do
     user: users.sample
   )
 
+  quiz.quiz_taker = users.shuffle.slice(0, rand(users.count))
+  quiz.user.quiz_taken = Quiz.all.shuffle.slice(0, rand(Quiz.all.count))
+
   if quiz.valid?
     rand(0..11).times do
       quiz.questions << Question.new(
@@ -52,6 +62,8 @@ end
 
 quizzes = Quiz.all
 questions = Question.all
+results = Result.all
 
-puts "Created #{quizzes.count} quizzes, #{questions.count} questions, and #{users.count} users!"
+
+puts "Created #{quizzes.count} quizzes, #{questions.count} questions, #{results.count} results and #{users.count} users!"
 puts "Login with #{super_user.email} and password of `#{PASSWORD}`!"
