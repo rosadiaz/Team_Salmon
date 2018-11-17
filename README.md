@@ -1,24 +1,17 @@
-# README
+# QUIZZ-BUZZ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Team Salmon presents: QUIZZ-BUZZ
 
-Things you may want to cover:
+## Contributors
 
-* Ruby version
+- [Rosa Diaz](https://github.com/rosadiaz)
+- [Daniel Hawkins](https://github.com/dockhands)
+- [Nicholas Chan](https://github.com/LeoBotti)
+- [Ronald Liu](https://github.com/rkkl1337)
+- [Orsolya Bus](https://github.com/orsolyabus)
+- [Chris Chu](https://github.com/chrischu5)
 
-* System dependencies
+## Summary
 
-* Configuration
+Our project is a quiz website that will allow users to add and take quizzes that are added onto our site. All of the quizzes are community-generated. 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
