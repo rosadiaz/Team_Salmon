@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_182812) do
     t.integer "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "quizzes_id"
-    t.index ["quizzes_id"], name: "index_questions_on_quizzes_id"
+    t.bigint "quiz_id"
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_182812) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_quizzes_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +47,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_182812) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "questions", "quizzes", column: "quizzes_id"
-  add_foreign_key "quizzes", "users", column: "users_id"
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "users"
 end
