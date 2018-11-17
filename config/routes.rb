@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     resources :questions 
   end
   
+  get "/users/quizzes/completed", to: "users#completed_quizzes", as: "comleted_quizzes"
+
+
   root({ to: 'home#index' })
 end
