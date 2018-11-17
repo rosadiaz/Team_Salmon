@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :results
     has_many :quizzes, dependent: :nullify
     
     has_secure_password 
