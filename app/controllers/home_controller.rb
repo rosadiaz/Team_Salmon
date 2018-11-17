@@ -2,9 +2,14 @@ class HomeController < ApplicationController
 
   def leaderboard
     results = Result.all
-    leaderboard_results = {}
+    lb_results = {}
     results.each do |r|
-      leaderboard_results[r.user_id] = r.score
+      if lb_results[r.user_id]
+        val = lb_results[r.user_id] + r.score
+        lb_results[r.user_id] = val
+      else
+        lb_results[r.user_id] = r.score
+      end
     end
   end
 end
