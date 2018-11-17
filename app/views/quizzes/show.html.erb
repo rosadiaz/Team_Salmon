@@ -2,12 +2,18 @@
 
 <p class="mx-2"><%= @quiz.description %></p>
 <p class="mx-2">Created by: <%= @quiz.user&.first_name %></p>
-<div class="mx-2">
-  <%= link_to('Edit', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
-  <%= link_to('Delete', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary") %>
-</div>
+
+<% if can? :crud, @quiz %>
+  <div class="mx-2">
+    <%= link_to('Edit', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
+    <%= link_to('Delete', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary") %>
+  </div>
+<% end %>
+
 <div class="mx-2">
   <% @quiz.questions.each do |q| %>
-    <h2><%= q.question %></h2>
+    <h4><%= q.question %></h4>
   <% end %>
 </div>
+
+<%= link_to 'Add Questions', new_quiz_question_path(@quiz.id) %>

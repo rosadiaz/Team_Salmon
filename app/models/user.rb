@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+    has_many :results, dependent: :destroy
     has_many :quizzes, dependent: :nullify
+    has_many :quiz_taken, through: :results, source: :quiz
     
     has_secure_password 
 
