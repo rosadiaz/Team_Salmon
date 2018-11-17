@@ -1,17 +1,18 @@
 <%= form_for @user do |f| %>
-  
     <div>
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname %>
-  </div>
-  
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <%= f.submit 'Update' %>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname %>
+    </div>
+
+    <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+    </div>
+
+    <%= f.submit 'Update' %>
 <% end %>

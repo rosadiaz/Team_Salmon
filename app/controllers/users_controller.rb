@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save
           session[:user_id] = @user.id
-          redirect_to root_path, notice: 'Thank you for signing up!'
+          redirect_to root_path, notice: "Thank you for signing up!"
         else
           render :new
         end
@@ -25,17 +25,17 @@ class UsersController < ApplicationController
     def update
 
         if @user.update user_params
-            redirect_to user_path(@user.id)
-          else
-            render :edit
-          end
+        redirect_to user_path(@user.id)
+        else
+        render :edit
+        end
 
     end
 
 
     def destroy
         @user.destroy 
-        redirect_to root_path, notice: 'See you next time!'
+        redirect_to root_path, notice: "See you next time!"
     end 
 
     
