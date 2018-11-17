@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  before_action :find_quiz, only: [:show, :edit, :update, :delete]
 
   def new
     @quiz = Quiz.new
@@ -13,8 +14,7 @@ class QuizzesController < ApplicationController
     end
   end
 
-  def show
-    @quiz = Quiz.find params[:id]
+  def show    
   end
   
   def index
@@ -22,10 +22,23 @@ class QuizzesController < ApplicationController
   end
 
   def edit
-    @quiz = Quiz.find params[:id]
   end
 
+  def update
+    if @quiz.update quiz_params
+      redirect_to quiz_path(@quiz.id)
+    else
+      render :edit
+    end
+  end
+
+  
+
   private
+
+  def find_quiz
+    @quiz = Quiz.find params[:id]
+  end
 
   def quiz_params
     params.require(:quiz).permit(:title, :description)
