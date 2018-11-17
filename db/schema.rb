@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_184633) do
+ActiveRecord::Schema.define(version: 2018_11_17_202943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
-    t.string "question"
     t.string "option0"
     t.string "option1"
     t.string "option2"
@@ -24,7 +23,10 @@ ActiveRecord::Schema.define(version: 2018_11_17_184633) do
     t.integer "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+
     t.bigint "quiz_id"
+    t.string "question"
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"
   end
 
@@ -33,8 +35,20 @@ ActiveRecord::Schema.define(version: 2018_11_17_184633) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.bigint "user_id"
     t.index ["user_id"], name: "index_quizzes_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "quiz_id"
+    t.integer "score"
+    t.integer "attempts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_results_on_quiz_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,4 +64,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_184633) do
 
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "users"
+  add_foreign_key "results", "quizzes"
+  add_foreign_key "results", "users"
 end

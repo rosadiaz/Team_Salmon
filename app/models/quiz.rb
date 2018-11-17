@@ -1,4 +1,5 @@
 class Quiz < ApplicationRecord
+  has_many :results
   belongs_to :user
   has_many :questions, dependent: :destroy
 
