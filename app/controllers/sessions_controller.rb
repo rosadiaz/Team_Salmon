@@ -8,15 +8,12 @@ def create
 
     if @user&.authenticate(session_params[:password])
         session[:user_id] = @user.id
-        redirect_to root_path, notice: "Signed in!"
+        flash[:success] = "Signed in!"
+        redirect_to root_path
 
     else 
-        puts "didn't log in ======================"
         flash.now[:danger] = "Wrong credz, loser"
-        
-        redirect_to new_session_path, notice: "Wrong Credz!"
-
-    
+        render :new     
     end 
 end 
 
