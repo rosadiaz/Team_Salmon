@@ -1,13 +1,15 @@
 <h1>Sign In-ziesss</h1>
 
-<%= form_tag sessions_path do %>
+
+
+<%= form_for :session, url: sessions_path do |f| %>
   <div>
-    <%= label_tag :nickname %>
-    <%= nickname_field_tag :nickname %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
   </div>
   <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </div>
-  <%= submit_tag 'Sign In' %>
+  <%= f.submit 'Sign In' %>
 <% end %>
