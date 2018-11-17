@@ -3,12 +3,6 @@ Question.delete_all
 Quiz.delete_all
 User.delete_all
 
-25.times do
-  Result.create(
-    score: rand(0..11)
-  )
-end
-
 PASSWORD = "superadmin"
 NUM_OF_CREATES = 100
 
@@ -63,6 +57,10 @@ end
 quizzes = Quiz.all
 questions = Question.all
 results = Result.all
+
+results.each do |r|
+  r.score = rand(0..11)
+end
 
 
 puts "Created #{quizzes.count} quizzes, #{questions.count} questions, #{results.count} results and #{users.count} users!"
