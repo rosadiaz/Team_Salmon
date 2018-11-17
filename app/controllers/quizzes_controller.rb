@@ -7,6 +7,8 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new quiz_params
+    @quiz.user = current_user
+    
     if @quiz.save
       redirect_to quiz_path(@quiz.id)
     else
