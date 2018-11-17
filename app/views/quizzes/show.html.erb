@@ -6,7 +6,8 @@
   <%= link_to('Edit', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
   <%= link_to('Delete', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary") %>
 </div>
-
-<% @quiz.questions.each do |q| %>
-  <h2><%= q.question %></h2>
-<% end %>
+<div class="mx-2">
+  <% @quiz.questions.each do |q| %>
+    <h2><%= q.question %></h2>
+  <% end %>
+</div>
