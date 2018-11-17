@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :questions 
   end
 
-  resources :index
+  get("/leaderboard", { to: "home#leaderboard", as: :leaderboard })
   
   root({ to: 'home#index' })
 end
