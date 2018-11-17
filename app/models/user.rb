@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
     has_many :results
-=======
     has_many :quizzes, dependent: :nullify
     
->>>>>>> origin/integration
     has_secure_password 
 
 
