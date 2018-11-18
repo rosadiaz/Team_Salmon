@@ -3,7 +3,7 @@
     <div class="mb-2">
       <h2 class=" text-center"><%= @quiz.title %></h2>
       <p class=""><%= @quiz.description %></p>
-      <small >Created by: <%= @quiz.user&.first_name %></small>
+      <small >Created by: <%= @quiz.user.nickname.capitalize %></small>
     </div>
     
     <% if can? :crud, @quiz %>
