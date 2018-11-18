@@ -1,4 +1,4 @@
-class ResultsController < ApplicationController
+class ResultsController < HomeController
 
     before_action :find_quiz, only: [ :create, :show ]
     before_action :authorize_user!, only: [ :create ]
@@ -16,8 +16,10 @@ class ResultsController < ApplicationController
     end
     
     def show
+        leaderboard()
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
+        @leaderboard_score = @lb_results[@result.user.nickname]
     end
 
     private
