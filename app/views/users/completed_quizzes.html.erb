@@ -1,4 +1,4 @@
-<h1><%= @user.nickname.capitalize %>'s Completed Quizzes</h1>
+
 <main class="mx-4">
 <span><b>Total score: <%= @current_user_total_score %></b></span> 
 
@@ -27,5 +27,7 @@
         </div>    
       <% end %>
     </div>
+      <%= link_to('Take more quizzes', quizzes_path, class: "btn btn-outline-primary") %>
   </div>    
+<% end %>
 </main>

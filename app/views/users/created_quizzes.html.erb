@@ -1,4 +1,4 @@
-<h1><%= @user.nickname.capitalize %>'s Created Quizzes</h1>
+
 <main class="mx-4"> 
 
 <div>
@@ -27,5 +27,7 @@
         </div>    
       <% end %>
     </div>
-  </div>    
+  <%= link_to('Create New Quiz', new_quiz_path, class: "btn btn-outline-primary") %>
+  </div>   
+<% end %> 
 </main>
