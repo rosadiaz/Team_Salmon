@@ -33,9 +33,9 @@
       
     <% end %>
     <% if can? :take, @quiz %>
-      <div class="mb-2">
+      <% if @quiz.questions.length > 0 %>
         <input type="submit" value='Submit Answers' class='btn btn-primary'>
-      </div>
+      <% end %>
     <% end %>
   </form>
 </div>

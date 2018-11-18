@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">          
               <p class="card-text"><%= q.description.slice(0, 100)%>...</p>  
-              <small class="text-muted">Score: <%= @quizzes_scores.find_by(quiz_id: q.id).score %></small>      
+              <small class="text-muted">Score: <%= @taken_quizzes.find_by(quiz_id: q.id).score %></small>      
             </div>
           </div>
         </div>    
