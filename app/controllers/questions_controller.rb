@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_quiz, only: [:new, :edit, :update, :create]
+    before_action :find_quiz, only: [:new, :edit, :update, :create, :destroy]
     before_action :find_question, only: [:show, :edit, :update, :destroy]
 
     def new
@@ -38,8 +38,8 @@ class QuestionsController < ApplicationController
     end
 
     def destroy
-        @question.destroy
-        # AFTER REDIRECT TO SOMEWHERE
+        flash[:success] = "Question deleted!"
+        redirect_to quiz_path(@quiz.id)
     end
 
     private
