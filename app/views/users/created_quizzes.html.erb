@@ -1,6 +1,13 @@
-<h1><%= @user.nickname.capitalize %>'s Created Quizzes</h1>
+
 <main class="mx-4"> 
 
+<% if  @created_quiz == [] %>
+  <h2> You haven't created any quizzes yet...</h2>
+  <%= link_to('Create Quiz', new_quiz_path, class: "btn btn-outline-primary") %>
+
+
+<% else %>
+<h2>Your created quizzes</h2>
   <div class="container">  
     <div class ="row justify-content-md-center">
       <% @created_quiz.each do |q| %>
@@ -18,5 +25,7 @@
         </div>    
       <% end %>
     </div>
-  </div>    
+  <%= link_to('Create New Quiz', new_quiz_path, class: "btn btn-outline-primary") %>
+  </div>   
+<% end %> 
 </main>
