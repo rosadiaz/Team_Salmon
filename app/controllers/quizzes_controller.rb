@@ -12,6 +12,9 @@ class QuizzesController < ApplicationController
     @quiz.user = current_user
     
     if @quiz.save
+      if @quiz.user.present?
+        UserMailer.notify_quiz_created(@quiz).deliver_later(wait: 10.seconds)
+      end
       redirect_to quiz_path(@quiz.id)
     else
       if @quiz.errors.present?
