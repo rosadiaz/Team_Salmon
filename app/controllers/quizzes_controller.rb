@@ -14,6 +14,9 @@ class QuizzesController < ApplicationController
     if @quiz.save
       redirect_to quiz_path(@quiz.id)
     else
+      if @quiz.errors.present?
+        flash.now[:danger] = @quiz.errors.full_messages.join(" · ")
+      end 
       render :new
     end
   end
