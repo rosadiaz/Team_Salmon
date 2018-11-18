@@ -17,10 +17,9 @@ class ResultsController < HomeController
     end
     
     def show
-        leaderboard()
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
-        @leaderboard_score = @lb_results[@result.user.nickname]
+        @leaderboard_score = User.find(current_user.id).results.sum(:score)
     end
 
     private
