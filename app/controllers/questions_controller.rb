@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
     before_action :find_quiz, only: [:new, :edit, :update, :create]
+<<<<<<< HEAD
 before_action :find_question, only: [:show, :edit, :update, :destroy]
+=======
+    before_action :find_question, only: [:show, :edit, :update, :destroy]
+>>>>>>> origin/integration
 
     def new
         @question = Question.new
