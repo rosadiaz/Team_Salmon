@@ -4,7 +4,7 @@ class ResultsController < HomeController
     before_action :authorize_user!, only: [ :create ]
   
     def create
-        @score = calculate_score(params)
+        @score = helpers.calculate_score(params)
 
         @result = Result.new(user: current_user, quiz: @quiz, score: @score)
         if @result.save
@@ -34,7 +34,4 @@ class ResultsController < HomeController
         end
     end 
 
-    def calculate_score(answers)
-        5
-    end
 end
