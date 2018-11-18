@@ -2,13 +2,13 @@
 
 <main class="mx-4"> 
 
-<% if User.find(15).quiz_taken.empty? %>
+<%# <% if User.find(15).quiz_taken.empty? %>
 
-<h3> You haven't completed any quizzes yet...</h3>
+<%# <h3> You haven't completed any quizzes yet...</h3> %>
 
-<% else %>
+<%# <% else %>
 
-    <h3><%= @user.nickname %>'s  completed quizzes</h3>
+    <h3><%= current_user.nickname %>'s  completed quizzes</h3>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -19,8 +19,8 @@
       </thead>
       <tbody>
 
-      <% @index=1%>
-      <% User.find(15).quiz_taken.each do |q| %>
+      <% @index=1 %>
+      <% @completed_quiz.each do |q| %>
     
         <tr>
           <th scope="row"> <%= @index%> </th>
@@ -31,5 +31,5 @@
         
       <% end %>
 
-  <% end %>
+  <%# <% end %>
 </main>

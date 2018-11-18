@@ -37,13 +37,18 @@ class UsersController < ApplicationController
   end 
 
   def completed_quizzes
+    @completed_quiz = current_user.quiz_taken
 
-    #@completed_quiz = current_user.quiz_taken
-    #User.find_by_id(current_user).quiz_taken
+    if @completed_quiz == []
+      flash.now[:danger] = "You haven't completed any QuizBuzzes yet!"
+    end
   end 
 
   def created_quizzes
     @created_quiz = current_user.quizzes
+    if @created_quiz == []
+      flash.now[:danger] = "You haven't made any QuizzBuzzes yet!"
+    end
   end
   
   private
