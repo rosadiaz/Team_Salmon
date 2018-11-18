@@ -45,6 +45,7 @@
           <% end %>          
         <% end %>
 
+
         <% if can? :take, @quiz %>
           <div class="mb-2">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
@@ -58,6 +59,7 @@
       <div class=''>
         <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
       </div>
+
     <% end %>
 
 
