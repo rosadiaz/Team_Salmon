@@ -13,5 +13,8 @@ module ResultsHelper
     answers.reject { |k| to_reject.include?(k) }
   end
 
+  def get_correct_answers(id)
+    Quiz.find(id).questions.each_with_object({}) { |q, hash| hash.store(q.id, q.correct_answer) }
+  end
 
 end
