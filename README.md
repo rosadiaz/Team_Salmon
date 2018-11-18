@@ -1,6 +1,6 @@
-# QUIZZ-BUZZ
+# QuizzBuzz
 
-Team Salmon presents: QUIZZ-BUZZ
+Team Salmon presents: QuizzBuzz
 
 ## Contributors
 

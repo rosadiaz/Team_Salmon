@@ -1,4 +1,4 @@
-qResult.delete_all
+Result.delete_all
 Question.delete_all
 Quiz.delete_all
 User.delete_all

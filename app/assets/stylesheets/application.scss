@@ -35,5 +35,17 @@ $theme-colors: (
   "dark":       #3F5688
 );
 
+#quiz-index .card {
+  height: 197px;
+}
+
+#quiz-index .card-header {
+  height: 80px;
+}
+
+#quiz-index .card-title {
+  text-align: center;
+}
+
  @import "bootstrap";
  @import "main";
