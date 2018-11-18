@@ -12,6 +12,7 @@ class ResultsController < HomeController
             redirect_to quiz_result_path(@quiz.id, @result.id)	
         else
             flash[:danger] = @result.errors.full_messages.join(", ");
+            redirect_to quizzes_path
         end
     end
     
