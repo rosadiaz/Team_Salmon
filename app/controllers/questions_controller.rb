@@ -53,6 +53,9 @@ class QuestionsController < ApplicationController
 
     def find_question
         @question = Question.find params[:id]
+    rescue ActiveRecord::RecordNotFound
+        flash[:danger] = "Error"
+        redirect_to quizzes_path
     end
 
     def question_params
