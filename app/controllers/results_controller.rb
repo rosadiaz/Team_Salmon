@@ -8,9 +8,9 @@ class ResultsController < ApplicationController
         result = Result.new(user: current_user, quiz: quiz)
 
         if result.save
-            flash[:success] = "Quiz Completed"
+            flash[:success] = "Answers Submited"
         else
-            flash[:success] = "Question liked"
+            flash[:danger] = result.errors.full_messages.join(", ");
         end
     end
 

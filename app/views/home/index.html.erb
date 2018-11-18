@@ -1,3 +1,11 @@
-<h1> Welcome to Quizzle, my fizzle!</h1>
-<% if session[:user_id] %>
-<% end %> 
+<div class="container">
+
+  <h1> Welcome to Quizz-Buzz!</h1>
+  <p>
+    This is the hello message, Dan or Cris, or anyohe who feels the creativity should wite about what our app can do and how to use it.
+  </p>
+  <div class="d-flex justify-content-center">
+    <%= link_to( "Log In", new_sessions_path, class: "btn btn-primary btn-lg mr-4") %>
+    <%= link_to( "Sign Up", new_user_path, class: "btn btn-primary btn-lg" )%>
+  </div>
+</div>

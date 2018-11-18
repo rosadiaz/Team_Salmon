@@ -1,0 +1,13 @@
+<%# ROUTE IS "/leaderboard" or leaderboard_path %>
+<table>
+  <tr>
+    <th>User Nickname</th>
+    <th>User Total Score</th>
+  </tr>
+  <% @lb_results.each do |user, total_score| %>
+    <tr>
+      <td><%= user %></td>
+      <td><%= total_score %>
+    </tr>
+  <% end %>
+</table>
