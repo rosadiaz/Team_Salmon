@@ -12,7 +12,6 @@
 <% end %>
 
 <div class="mx-2">
-<<<<<<< HEAD
   <%= form_for :q do |form| %>
     <% @quiz.questions.each do |q| %>
       <p><strong><%= q.question %></strong></p>
@@ -21,10 +20,10 @@
         <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
       <% end %>
         <div class="form-group" id='answer-options'>
-          <%= form.radio_button :option0, 0, class: "form-control" %> A: <%= q.option0 %>
-          <%= form.radio_button :option1, 1, class: "form-control" %> B: <%= q.option1 %>
-          <%= form.radio_button :option2, 2, class: "form-control" %> C: <%= q.option2 %>
-          <%= form.radio_button :option3, 3, class: "form-control" %> D: <%= q.option3 %>
+          <%= form.radio_button :"#{q}", q.option0, class: "form-control" %> A: <%= q.option0 %>
+          <%= form.radio_button :"#{q}", q.option1, class: "form-control" %> B: <%= q.option1 %>
+          <%= form.radio_button :"#{q}", q.option2, class: "form-control" %> C: <%= q.option2 %>
+          <%= form.radio_button :"#{q}", q.option3, class: "form-control" %> D: <%= q.option3 %>
         </div>
     <% end %>
     <% if can? :take, @quiz %>
@@ -38,11 +37,3 @@
     <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
   </div>
 <% end %>
-=======
-  <% @quiz.questions.each do |q| %>
-    <h4><%= q.question %></h4>
-  <% end %>
-</div>
-
-<%= link_to 'Add Questions', new_quiz_question_path(@quiz.id) %>
->>>>>>> origin/integration

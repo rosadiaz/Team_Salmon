@@ -1,4 +1,4 @@
-Result.delete_all
+qResult.delete_all
 Question.delete_all
 Quiz.delete_all
 User.delete_all
@@ -17,7 +17,7 @@ super_user = User.create(
   first_name: "Test",
   last_name: "User",
   email: "test@user.com",
-  password_digest: PASSWORD,
+  password: PASSWORD,
   admin: true
 )
 
