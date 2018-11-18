@@ -1,7 +1,7 @@
 module ResultsHelper
 
   def calculate_score(answers)
-    quiz_id = answers.quiz_id
+    quiz_id = answers[:quiz_id]
     submitted_answers = clear_data(answers)
     answer_keys = get_answer_keys(quiz_id)
     correct_answers = compare_answers(answer_keys, submitted_answers)
@@ -9,8 +9,8 @@ module ResultsHelper
   end
 
   def clear_data(answers)
-    to_reject = [ :authenticity_token, :controller, :action, :quiz_id]
-    answers.reject { |k| to_reject.include?(k) }
+    to_reject = [ "authenticity_token", "controller", "action", "quiz_id" ]
+    answers.delete_if { |k| to_reject.include?(k) }
   end
 
   def get_answer_keys(id)
@@ -18,11 +18,11 @@ module ResultsHelper
   end
 
   def compare_answers(correct, guess)
-    guess.reject { |k, v| v != correct[k] }
+    guess.reject { |k, v| v.to_i != correct[k.to_i] }
   end
 
   def get_score(correct_answers)
-    correct_answers.length # times difficoulty
+    correct_answers.keys.length # times difficoulty
   end
 
 end

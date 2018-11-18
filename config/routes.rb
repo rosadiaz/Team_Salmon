@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
 
   resources :quizzes do
-    resources :questions 
+    resources :questions
+    resources :results, only: [:create, :show]
   end
 
   get("/leaderboard", { to: "home#leaderboard", as: :leaderboard })

@@ -19,6 +19,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @result = Result.new
     # render json: params
   end
   

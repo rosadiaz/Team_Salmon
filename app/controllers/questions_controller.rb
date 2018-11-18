@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
     before_action :find_quiz, only: [:new, :edit, :update, :create]
+<<<<<<< HEAD
+before_action :find_question, only: [:show, :edit, :update, :destroy]
+=======
     before_action :find_question, only: [:show, :edit, :update, :destroy]
+>>>>>>> origin/integration
 
     def new
         @question = Question.new
@@ -12,7 +16,6 @@ class QuestionsController < ApplicationController
         @question.quiz = @quiz
 
         if @question.save
-            # UPDATE DOM WITH NEW QUESTION
             flash[:success] = "Question made!"
             redirect_to quiz_path(@quiz)
         else
@@ -48,7 +51,7 @@ class QuestionsController < ApplicationController
     end
 
     def find_quiz
-        # @quiz = Quiz.find params[:quiz_id]
+        @quiz = Quiz.find params[:quiz_id]
     end
 
     def find_question
