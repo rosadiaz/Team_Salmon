@@ -34,16 +34,16 @@
              </div>
             </li>
             <li class="nav-item">
-              <%# <%= link_to("Leaderboard", leaderboard_path, class: "nav-link") %> %>
+              <%= link_to("Leaderboard", leaderboard_path, class: "nav-link") %>
             </li>
           </ul>  
           <% if user_signed_in? %>       
-            <div class="ml-auto d-flex">         
+            <div class="navbar-nav ml-auto d-flex">         
               <%= link_to("Hello #{current_user.first_name}", user_path(current_user), class: "nav-link") %>
               <%= link_to("Log out", sessions_path, method: :delete, class: "nav-link")%>
             </div>
           <% else %>
-            <div class="ml-auto d-flex">  
+            <div class="navbar-nav ml-auto d-flex">  
               <%= link_to("Log in", new_sessions_path, class: "nav-link")%>
               <%= link_to("Sign up", new_user_path, class: "nav-link")%>
             </div>

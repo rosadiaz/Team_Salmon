@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :quizzes do
     resources :questions 
   end
+
+  get("/leaderboard", { to: "home#leaderboard", as: :leaderboard })
   
   root({ to: 'home#index' })
 end
