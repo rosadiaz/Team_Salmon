@@ -1,13 +1,16 @@
 
 <main class="mx-4">
+<span><b>Total score: <%= @current_user_total_score %></b></span> 
 
-<% if  @completed_quiz == [] %>
-  <h2> You haven't completed any quizzes yet...</h2>
-  <%= link_to('See quizzes', quizzes_path, class: "btn btn-outline-primary") %>
-<% else %>
-
-<h2> Your completed quizzes </h2>
-
+<div>
+  <% if @completed_quiz == [] %>
+  <%= image_tag "sad_bee.png" %>
+    <p>Your quiz list is so sad and lonely, why don't you take a quiz now?</p>
+    <button class="btn btn-primary">
+      Take a quiz
+    </button>
+  <% end %>
+</div>
   <div class="container">  
     <div class ="row justify-content-md-center">
       <% @completed_quiz.each do |q| %>

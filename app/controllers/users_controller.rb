@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       if @user.present?
-        UserMailer.notify_user_created(@user).deliver
+        UserMailer.notify_user_created(@user).deliver_later(wait: 10.seconds)
       end
       session[:user_id] = @user.id
       flash[:success] = "Thank you for signing up!"
@@ -43,13 +43,10 @@ class UsersController < ApplicationController
   def completed_quizzes
     @completed_quiz = current_user.quiz_taken
     @current_user_total_score = taken_quizzes.sum(:score)
-
-  
   end 
 
   def created_quizzes
     @created_quiz = current_user.quizzes
-    
   end
 
   def taken_quizzes
