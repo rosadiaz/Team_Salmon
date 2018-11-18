@@ -43,24 +43,14 @@ class UsersController < ApplicationController
   def completed_quizzes
     @completed_quiz = current_user.quiz_taken
     @current_user_total_score = taken_quizzes.sum(:score)
-
-    # if @completed_quiz == []
-    #   flash.now[:danger] = "You haven't completed any QuizBuzzes yet!"
-    # end
   end 
 
   def created_quizzes
     @created_quiz = current_user.quizzes
-    if @created_quiz == []
-      flash.now[:danger] = "You haven't made any QuizzBuzzes yet!"
-    end
   end
 
   def taken_quizzes
     @taken_quizzes = Result.where(user_id: current_user.id)
-    # if @taken_quizzes == []
-    #   flash.now[:danger] = "You haven't completed any QuizzBuzzes yet!"
-    # end
   end
 
   
