@@ -22,7 +22,9 @@ class UsersController < ApplicationController
   end
 
   def show 
-    
+    @total_taken_quizzes = taken_quizzes.length
+    @total_created_quizzes = current_user.quizzes.length
+    @total_score = taken_quizzes.sum(:score)
   end 
 
   def update
@@ -32,7 +34,6 @@ class UsersController < ApplicationController
       render :edit
       end
   end
-
 
   def destroy
       @user.destroy 
