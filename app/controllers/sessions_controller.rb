@@ -9,7 +9,7 @@ def create
     if @user&.authenticate(session_params[:password])
         session[:user_id] = @user.id
         flash[:success] = "Signed in!"
-        redirect_to root_path
+        redirect_to quizzes_path
 
     else 
         flash.now[:danger] = "Wrong credz, loser"
