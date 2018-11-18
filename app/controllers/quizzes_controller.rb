@@ -20,7 +20,6 @@ class QuizzesController < ApplicationController
 
   def show
     @result = Result.new
-    # render json: params
   end
   
   def index
@@ -47,6 +46,9 @@ class QuizzesController < ApplicationController
 
   def find_quiz
     @quiz = Quiz.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    flash[:danger] = "Quiz does not exist!"
+    redirect_to quizzes_path
   end
 
   def quiz_params
