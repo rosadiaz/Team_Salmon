@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      if @user.present?
+        UserMailer.notify_user_created(@user).deliver
+      end
       session[:user_id] = @user.id
       flash[:success] = "Thank you for signing up!"
       redirect_to quizzes_path
