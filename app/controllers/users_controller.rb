@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       if @user.present?
-        UserMailer.notify_user_created(@user).deliver
+        UserMailer.notify_user_created(@user).deliver_later(wait: 10.seconds)
       end
       session[:user_id] = @user.id
       flash[:success] = "Thank you for signing up!"
