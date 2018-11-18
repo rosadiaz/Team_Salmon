@@ -1,11 +1,6 @@
 class QuestionsController < ApplicationController
-<<<<<<< HEAD
     before_action :find_quiz, only: [:new, :edit, :update, :create]
     before_action :find_question, only: [:show, :edit, :update, :destroy]
-=======
-    before_action :find_question, only: [:show, :edit, :update, :destroy]
-    before_action :find_quiz, only: [:new, :create]
->>>>>>> origin/integration
 
     def new
         @question = Question.new
@@ -36,11 +31,7 @@ class QuestionsController < ApplicationController
 
     def update
         if @question.update question_params
-<<<<<<< HEAD
             redirect_to quiz_path(@quiz.id)
-=======
-            redirect_to question_path(@question.id)
->>>>>>> origin/integration
         else
             render :edit
         end
