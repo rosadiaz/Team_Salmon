@@ -13,6 +13,27 @@
  *= require_tree .
  *= require_self
  */
+//  $theme-colors: (
+//   "primary":    #3494D6,
+//   "secondary":  #EB7E5B,
+//   // "success":    #,
+//   "info":       #99C5E6,
+//   // "warning":    #,
+//   // "danger":     #,
+//   "light":      #F6F7F7,
+//   "dark":       #578078
+// );
+
+$theme-colors: (
+  "primary":    #A287B4,
+  "secondary":  #55B8E6,
+  // "success":    #,
+  "info":       #EFD232,
+  // "warning":    #,
+  // "danger":     #,
+  "light":      #F6F4F3,
+  "dark":       #3F5688
+);
 
  @import "bootstrap";
  @import "main";
