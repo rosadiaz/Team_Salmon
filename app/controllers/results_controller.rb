@@ -4,11 +4,12 @@ class ResultsController < ApplicationController
     before_action :authorize_user!, only: [ :create ]
   
     def create
-        @result = Result.new(user: current_user, quiz: quiz)
+        @score = calculate_score(params)
 
+        @result = Result.new(user: current_user, quiz: @quiz, score: @score)
         if @result.save
             flash[:success] = "Answers Submited"
-            
+            redirect_to root_path
         else
             flash[:danger] = @result.errors.full_messages.join(", ");
         end
@@ -28,4 +29,8 @@ class ResultsController < ApplicationController
             redirect_to quiz_path(@quiz)
         end
     end 
+
+    def calculate_score(answers)
+        5
+    end
 end
