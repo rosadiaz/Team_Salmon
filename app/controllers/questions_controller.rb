@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+    before_action :authenticate_user!
     before_action :find_quiz, only: [:new, :edit, :update, :create]
     before_action :find_question, only: [:show, :edit, :update, :destroy]
 
@@ -52,6 +53,9 @@ class QuestionsController < ApplicationController
 
     def find_question
         @question = Question.find params[:id]
+    rescue ActiveRecord::RecordNotFound
+        flash[:danger] = "Error"
+        redirect_to quizzes_path
     end
 
     def question_params
