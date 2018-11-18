@@ -15,22 +15,33 @@
   <form action="/quizzes/<%= @quiz.id %>/results" method="POST">
     <% @quiz.questions.each do |q| %>
       <p><strong><%= q.question %></strong></p>
-      <% if can? :crud, @quiz %>
-        <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
-        <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
-      <% end %>
+      
         <div class="form-group" id='answer-options'>
           <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">          
-          <input type="radio" name='<%= q.id %>' value=0><label for="<%= q.option0 %>"><%= q.option0 %></label>
+          <input type="radio" name='<%= q.id %>' value=0 required><label for="<%= q.option0 %>"><%= q.option0 %></label>
           <input type="radio" name='<%= q.id %>' value=1><label for="<%= q.option1 %>"><%= q.option1 %></label>
           <input type="radio" name='<%= q.id %>' value=2'><label for="<%= q.option2 %>"><%= q.option2 %></label>
           <input type="radio" name='<%= q.id %>' value=3'><label for="<%= q.option3 %>"><%= q.option3 %></label>
         </div>
+
+      <% if can? :crud, @quiz %>
+        <div class="mb-2">
+          <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
+          <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
+        </div>
+      <% end %>
+      
     <% end %>
     <% if can? :take, @quiz %>
+<<<<<<< HEAD
       <% if @quiz.questions.length > 0 %>
         <input type="submit" value='Submit Answers' class='btn btn-primary'>
       <% end %>
+=======
+      <div class="mb-2">
+        <input type="submit" value='Submit Answers' class='btn btn-primary'>
+      </div>
+>>>>>>> origin/integration
     <% end %>
   </form>
 </div>
