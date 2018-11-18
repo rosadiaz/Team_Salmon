@@ -26,7 +26,7 @@
               <div class="dropdown-menu">
                 <%= link_to("All Quizzes", quizzes_path, class: "dropdown-item")%>
                 <% if user_signed_in? %>
-                  <%= link_to("My Taken Quizzes", quizzes_path, class: "dropdown-item")%>
+                  <%= link_to("My Taken Quizzes", completed_quizzes_path, class: "dropdown-item")%>
                   <%= link_to("My Created Quizzes", quizzes_path, class: "dropdown-item")%>
                   <%= link_to("Create New Quiz", new_quiz_path, class: "dropdown-item")%>
                 <% end %>

@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   get("/leaderboard", { to: "home#leaderboard", as: :leaderboard })
   
+  get "/users/quizzes/completed", to: "users#completed_quizzes", as: "completed_quizzes"
+
+
   root({ to: 'home#index' })
 end
