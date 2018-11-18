@@ -1,7 +1,7 @@
 <h1 class="mx-2"><%= @quiz.title %></h1>
 
 <p class="mx-2"><%= @quiz.description %></p>
-<p class="mx-2">Created by: <%= @quiz.user&.first_name %></p>
+<p class="mx-2">Created by: <%= @quiz.user.nickname.capitalize %></p>
 
 <% if can? :crud, @quiz %>
   <div class="mx-2">

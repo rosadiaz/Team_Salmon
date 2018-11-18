@@ -26,7 +26,8 @@ class QuizzesController < ApplicationController
   end
   
   def index
-    @quizzes = Quiz.all.order(created_at: :desc)
+    quizzes = Quiz.all.order(created_at: :desc)
+    @valid_quizzes = quizzes.select{|quiz| quiz.questions.length>0}
   end
 
   def edit
