@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+    before_action :authenticate_user!
     before_action :find_quiz, only: [:new, :edit, :update, :create]
     before_action :find_question, only: [:show, :edit, :update, :destroy]
 
