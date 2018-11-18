@@ -1,13 +1,8 @@
 <h1><%= @user.nickname %>'s  completed quizzes</h1>
 <main class="mx-4"> 
-<% if User.find(15).quiz_taken.empty? %>
-  <h3> You haven't completed any quizzes yet...</h3>
-  <%= link_to("All Quizzes", quizzes_path, class: "")%>
-<% else %>
   <div class="container">  
     <div class ="row justify-content-md-center">
-  
-      <% User.find(15).quiz_taken.each do |q| %>
+      <% @completed_quiz.each do |q| %>
         <div class="col-lg-4 col-sm-12 col-md-6">
           <div class="card m-2 container-fluid p-0">
             <div class="card-header">
@@ -23,5 +18,4 @@
       <% end %>
     </div>
   </div>    
-<% end %>
 </main>

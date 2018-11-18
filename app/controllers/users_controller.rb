@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Thank you for signing up!"
+      flash[:success] = "Thank you for signing up!"
+      redirect_to quizzes_path
     else
       render :new
     end
@@ -36,13 +37,18 @@ class UsersController < ApplicationController
   end 
 
   def completed_quizzes
+    @completed_quiz = current_user.quiz_taken
 
-    #@completed_quiz = current_user.quiz_taken
-    #User.find_by_id(current_user).quiz_taken
+    if @completed_quiz == []
+      flash.now[:danger] = "You haven't completed any QuizBuzzes yet!"
+    end
   end 
 
   def created_quizzes
     @created_quiz = current_user.quizzes
+    if @created_quiz == []
+      flash.now[:danger] = "You haven't made any QuizzBuzzes yet!"
+    end
   end
   
   private
