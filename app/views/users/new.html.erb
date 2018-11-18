@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1 class="mx-2">Sign Up</h1>
 
 <% if @user.errors.any? %>
     <ul>
@@ -10,32 +10,32 @@
 
 <%= form_for @user do |f| %>
   
-    <div>
+  <div class="form-group mx-2">
     <%= f.label :nickname %>
-    <%= f.text_field :nickname %>
+    <%= f.text_field :nickname, class: "form-control w-50" %>
   </div>
   
-  <div>
+  <div class="form-group mx-2">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "form-control w-50" %>
   </div>
-  <div>
+  <div class="form-group mx-2">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control w-50" %>
   </div>
 
 
-  <div>
+  <div class="form-group mx-2">
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control w-50" %>
   </div>
-  <div>
+  <div class="form-group mx-2">
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control w-50" %>
   </div>
-  <div>
+  <div class="form-group mx-2">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control w-50" %>
   </div>
-  <%= f.submit 'Sign Up' %>
+  <%= f.submit 'Sign Up', class: "btn btn-outline-primary mx-2" %>
 <% end %>
