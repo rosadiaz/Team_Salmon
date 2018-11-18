@@ -35,9 +35,9 @@
                 <div class="dropdown-menu">
                   <%= link_to("All Quizzes", quizzes_path, class: "dropdown-item")%>
                   <% if user_signed_in? %>
-                    <%= link_to("My Taken Quizzes", completed_quizzes_path, class: "dropdown-item")%>
-                    <%= link_to("My Created Quizzes", created_quizzes_path(current_user), class: "dropdown-item")%>
-                    <%= link_to("Create New Quiz", new_quiz_path, class: "dropdown-item")%>
+                    <%= link_to("Taken Quizzes", completed_quizzes_path, class: "dropdown-item")%>
+                    <%= link_to("Created Quizzes", created_quizzes_path(current_user), class: "dropdown-item")%>
+                    <%= link_to("New Quiz", new_quiz_path, class: "dropdown-item")%>
                   <% end %>
                 </div>
               </div>
@@ -48,7 +48,7 @@
           </ul>  
           <% if user_signed_in? %>       
             <div class="navbar-nav ml-auto d-flex">         
-              <%= link_to("Hello #{current_user.first_name}", user_path(current_user), class: "nav-link") %>
+              <%= link_to("Hello #{current_user.nickname}", user_path(current_user), class: "nav-link") %>
               <%= link_to("Log out", sessions_path, method: :delete, class: "nav-link")%>
             </div>
           <% else %>
