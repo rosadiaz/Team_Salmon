@@ -7,6 +7,10 @@ class ResultsController < HomeController
         @score = helpers.calculate_score(params)
 
         @result = Result.new(user: current_user, quiz: @quiz, score: @score)
+        if !@quiz.questions
+            flash[:danger] = "No Questions on this quiz!"
+            redirect_to quiz_path(@quiz)
+        end
         if @result.save
             flash[:success] = "Answers Submited"
             redirect_to quiz_result_path(@quiz.id, @result.id)	
