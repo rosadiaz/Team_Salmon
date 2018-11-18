@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :find_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:show, :edit, :update, :destroy, :completed_quizzes]
 
 
     def new
@@ -20,6 +20,13 @@ class UsersController < ApplicationController
     def show 
 
 
+    end 
+
+
+    def completed_quizzes
+
+        #@completed_quiz = current_user.quiz_taken
+        #User.find_by_id(current_user).quiz_taken
     end 
 
     def update
