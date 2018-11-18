@@ -1,35 +1,21 @@
-
-
+<h1><%= @user.nickname %>'s  completed quizzes</h1>
 <main class="mx-4"> 
-
-<% if User.find(15).quiz_taken.empty? %>
-
-<h3> You haven't completed any quizzes yet...</h3>
-
-<% else %>
-
-    <h3><%= @user.nickname %>'s  completed quizzes</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      <% @index=1%>
-      <% User.find(15).quiz_taken.each do |q| %>
-    
-        <tr>
-          <th scope="row"> <%= @index%> </th>
-          <td> <%= link_to q.title, quiz_path(q)%> </td>
-          <td>30%</td>
-        </tr>
-        <% @index +=1 %>
-        
+  <div class="container">  
+    <div class ="row justify-content-md-center">
+      <% @completed_quiz.each do |q| %>
+        <div class="col-lg-4 col-sm-12 col-md-6">
+          <div class="card m-2 container-fluid p-0">
+            <div class="card-header">
+              <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q) %></h5>
+            </div>
+            <div class="card-body">          
+              <p class="card-text"><%= q.description.slice(0, 100)%>...</p>  
+ <%# QUIZZ SCORING NOT IMPLEMENTED YET %>             
+              <small class="text-muted">Score: <%#= q.score %></small>      
+            </div>
+          </div>
+        </div>    
       <% end %>
-
-  <% end %>
+    </div>
+  </div>    
 </main>
