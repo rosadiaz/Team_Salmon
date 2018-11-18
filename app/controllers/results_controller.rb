@@ -1,6 +1,5 @@
 class ResultsController < HomeController
     before_action :find_quiz, only: [ :create, :show ]
-    before_action :authorize_user!, only: [ :create ]
 
     def create
         @score = helpers.calculate_score(params)
@@ -29,11 +28,4 @@ class ResultsController < HomeController
     def find_quiz
         @quiz = Quiz.find params[:quiz_id]
     end
-
-    def authorize_user!
-        unless can?(:take, @quiz)
-            flash[:danger] = "Can't take your own quiz or retake quizzes!"
-            redirect_to quiz_path(@quiz)
-        end
-    end 
 end

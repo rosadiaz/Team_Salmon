@@ -36,6 +36,8 @@
       <% if @quiz.questions.length > 0 %>
         <input type="submit" value='Submit Answers' class='btn btn-primary'>
       <% end %>
+    <% else %>
+      <%= link_to 'Cannot Retake Quizzes', quizzes_path, class: 'btn btn-warning' %>
     <% end %>
   </form>
 </div>

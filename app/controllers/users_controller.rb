@@ -41,6 +41,10 @@ class UsersController < ApplicationController
   end 
 
   def completed_quizzes
+    if(!current_user)
+      flash.now[:danger] = "User doesn't exist!"
+      redirect_to root_path
+    end
     @completed_quiz = current_user.quiz_taken
     @current_user_total_score = taken_quizzes.sum(:score)
 

@@ -21,6 +21,10 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @taken = Result.where(user_id: current_user.id).where(quiz_id: @quiz.id)
+    if @taken != []
+      flash.now[:danger] = "You've already taken this quiz!"
+    end
     @result = Result.new
   end
   
