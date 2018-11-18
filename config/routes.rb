@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :questions
     resources :results, only: [:create, :show]
   end
+
+  get("/leaderboard", { to: "home#leaderboard", as: :leaderboard })
   
   root({ to: 'home#index' })
 end
