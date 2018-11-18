@@ -25,7 +25,8 @@ class UsersController < ApplicationController
 
     def completed_quizzes
 
-
+        #@completed_quiz = current_user.quiz_taken
+        #User.find_by_id(current_user).quiz_taken
     end 
 
     def update
