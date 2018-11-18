@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
       redirect_to quiz_path(@quiz.id)
     else
       if @quiz.errors.present?
-        flash.now[:danger] = @quiz.errors.full_messages.join(" · ")
+        flash.now[:danger] = @quiz.errors.full_messages.join(" • ")
       end 
       render :new
     end
@@ -32,7 +32,8 @@ class QuizzesController < ApplicationController
   end
   
   def index
-    @quizzes = Quiz.all.order(created_at: :desc)
+    quizzes = Quiz.all.order(created_at: :desc)
+    @valid_quizzes = quizzes.select{|quiz| quiz.questions.length>0}
   end
 
   def edit
