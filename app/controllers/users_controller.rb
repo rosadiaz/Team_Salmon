@@ -43,13 +43,10 @@ class UsersController < ApplicationController
   def completed_quizzes
     @completed_quiz = current_user.quiz_taken
     @current_user_total_score = taken_quizzes.sum(:score)
-
-  
   end 
 
   def created_quizzes
     @created_quiz = current_user.quizzes
-    
   end
 
   def taken_quizzes
