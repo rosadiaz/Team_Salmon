@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show 
+    
   end 
 
   def update
@@ -30,7 +31,6 @@ class UsersController < ApplicationController
       else
       render :edit
       end
-
   end
 
 
@@ -41,8 +41,7 @@ class UsersController < ApplicationController
 
   def completed_quizzes
     @completed_quiz = current_user.quiz_taken
-    @quizzes_scores = Result.where(user_id: current_user.id)
-    @current_user_total_score = @quizzes_scores.sum(:score)
+    @current_user_total_score = taken_quizzes.sum(:score)
 
     if @completed_quiz == []
       flash.now[:danger] = "You haven't completed any QuizBuzzes yet!"
@@ -55,6 +54,11 @@ class UsersController < ApplicationController
       flash.now[:danger] = "You haven't made any QuizzBuzzes yet!"
     end
   end
+
+  def taken_quizzes
+    @taken_quizzes = Result.where(user_id: current_user.id)
+  end
+
   
   private
 
