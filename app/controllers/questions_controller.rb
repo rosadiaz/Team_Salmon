@@ -38,8 +38,13 @@ class QuestionsController < ApplicationController
     end
 
     def destroy
-        flash[:success] = "Question deleted!"
-        redirect_to quiz_path(@quiz.id)
+        if @question.destroy
+            flash[:success] = "Question deleted!"
+            redirect_to quiz_path(@quiz.id)
+        else
+            flash[:danger] = @question.errors.messages.join(", ")
+            redirect_to quiz_path(@quiz.id)
+        end
     end
 
     private

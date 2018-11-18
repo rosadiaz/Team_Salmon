@@ -13,7 +13,7 @@
       <th scope="row"> 
       <i style="color: gold;" class="fas fa-trophy"></i>
       </th>
-      <td><%= @lb_results.first[0] %></td>
+      <td><%= User.find_by_id(@lb_results.first[0]).nickname %></td>
       <td><%= @lb_results.first[1] %>
     </tr>
 
@@ -21,7 +21,7 @@
       <th scope="row"> 
       <i style="color: silver;" class="fas fa-trophy"></i>
       </th>
-      <td><%= @lb_results.keys[1]%></td>
+      <td><%= User.find_by_id(@lb_results.keys[1]).nickname %></td>
       <td><%= @lb_results.values[1]%>
     </tr>
 
@@ -29,24 +29,24 @@
       <th scope="row">  
       <i style="color: #cd7f32;" class="fas fa-trophy"></i>
       </th>
-      <td><%= @lb_results.keys[2] %></td>
+      <td><%= User.find_by_id(@lb_results.keys[2]).nickname %></td>
       <td><%= @lb_results.values[2]%>
     </tr>
 
-    <% @index=4%>
+    <% @index=4 %>
     <% @lb_results.drop(3).each do |user, total_score| %>
       <% if @index <= 20%>
-        <% if user == @current_user_nickname %>
+        <% if user == @current_user_id %>
           <tr style="background-color: gold">
             <th scope="row"> <%= @index%> </th>
-            <td><%= user %></td>
+            <td><%= User.find_by_id(user).nickname %></td>
             <td><%= total_score %>
           </tr>
           <% @index +=1 %>
         <% else %>
           <tr>
             <th scope="row"> <%= @index%> </th>
-            <td><%= user %></td>
+            <td><%= User.find_by_id(user).nickname %></td>
             <td><%= total_score %>
           </tr>
           <% @index +=1 %>

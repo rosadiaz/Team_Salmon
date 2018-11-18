@@ -14,14 +14,14 @@ class ResultsController < HomeController
             redirect_to quiz_result_path(@quiz.id, @result.id)	
         else
             flash[:danger] = @result.errors.full_messages.join(", ");
+            redirect_to quizzes_path
         end
     end
 
     def show
-        leaderboard()
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
-        @leaderboard_score = @lb_results[@result.user.nickname]
+        @leaderboard_score = User.find(current_user.id).results.sum(:score)
     end
 
     private

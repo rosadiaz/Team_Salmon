@@ -1,6 +1,15 @@
-<h1><%= @user.nickname.capitalize %>'s Created Quizzes</h1>
+
 <main class="mx-4"> 
 
+<div>
+  <% if @created_quiz == [] %>
+  <%= image_tag "sad_bee.png" %>
+    <p>You haven't created any quizzes. Your list is so sad and lonely, why don't you make a new one?</p>
+    <button class="btn btn-primary">
+      Create a new quiz
+    </button>
+  <% end %>
+</div>
   <div class="container">  
     <div class ="row justify-content-md-center">
       <% @created_quiz.each do |q| %>
@@ -18,5 +27,7 @@
         </div>    
       <% end %>
     </div>
-  </div>    
+  <%= link_to('Create New Quiz', new_quiz_path, class: "btn btn-outline-primary") %>
+  </div>   
+<% end %> 
 </main>

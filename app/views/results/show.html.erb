@@ -1,4 +1,5 @@
-<h1>Your Quiz Results:</h1>
-<strong>Your score: <%= @result.score %>/<%= @max_score %></strong>
-<h1><%= ((@result.score.to_f/@max_score.to_f) * 100).round(2) %>% BIYAAAAAAAAAAATCH</h1>
-<p>Your current score on the leaderboard: <%=@leaderboard_score%></p>
+<h1>Result</h1>
+<p>Your Result: <%= @result.score %>/<%= @max_score %></p>
+<p><%= ((@result.score.to_f/@max_score.to_f) * 100).round(2) %>%</p>
+<p>Points Earned: <%=@result.score%></p>
+<p>Total Points: <%=@leaderboard_score%></p>
