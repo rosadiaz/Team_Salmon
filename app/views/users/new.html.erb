@@ -31,11 +31,11 @@
   </div>
   <div class="form-group mx-2">
     <%= f.label :password, "Password*" %>
-    <%= f.password_field :password, class: "form-control w-50" %>
+    <%= f.password_field :password, class: "form-control w-50", minlength: "6", require: true %>
   </div>
   <div class="form-group mx-2">
     <%= f.label :password_confirmation, "Confirm Password*" %>
-    <%= f.password_field :password_confirmation, class: "form-control w-50" %>
+    <%= f.password_field :password_confirmation, class: "form-control w-50", minlength: "6", required: true %>
   </div>
   <%= f.submit 'Sign Up', class: "btn btn-outline-primary mx-2" %>
 <% end %>
