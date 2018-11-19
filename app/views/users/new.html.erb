@@ -12,7 +12,7 @@
   
   <div class="form-group mx-2">
     <%= f.label :nickname, "Username*" %>
-    <%= f.text_field :nickname, class: "form-control w-50" %>
+    <%= f.text_field :nickname, class: "form-control w-50", required: true %>
   </div>
   
   <div class="form-group mx-2">
@@ -27,7 +27,7 @@
 
   <div class="form-group mx-2">
     <%= f.label :email, "Email*" %>
-    <%= f.email_field :email, class: "form-control w-50" %>
+    <%= f.email_field :email, class: "form-control w-50", required: true %>
   </div>
   <div class="form-group mx-2">
     <%= f.label :password, "Password*" %>
