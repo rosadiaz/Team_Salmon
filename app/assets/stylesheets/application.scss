@@ -32,7 +32,13 @@ $theme-colors: (
   "warning":    #eb801b,
   "danger":     #f44336,
   "light":      #F4F7F5,
-  "dark":       #420C0E
+  "dark":       #420C0E,
+  "all-dark":#be4759,
+  "all-light":#be47596e,
+  "taken-dark": #d39ba9,
+  "taken-light": #d39ba948,
+  "created-dark": #9B8EA6,
+  "created-light": rgba(155, 142, 166, 0.349),
 );
 
 #quiz-index .card {
@@ -45,6 +51,10 @@ $theme-colors: (
 
 #quiz-index .card-title {
   text-align: center;
+}
+
+.card-shadow {
+  box-shadow: 2px 4px 18px #888888
 }
 
 nav a {

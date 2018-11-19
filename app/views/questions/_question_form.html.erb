@@ -1,4 +1,7 @@
-<%= form_for([@quiz, @question]) do |form| %>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-lx-10">
+  <%= form_for([@quiz, @question]) do |form| %>
     <div class="form-group">
         <%= form.label :question%> <br>
         <%= form.text_area :question, class: "form-control", maxlength:"300", required: true %> 
@@ -13,7 +16,7 @@
         </div>
         </div>
         <div class="form-group col-md">
-        <label for="inputPassword4">Answers</label>
+        <label for="inputPassword4">Possible Answers</label>
         <%= form.text_field :option0, class: "form-control", maxlength:"100", required: true %> 
         </div>
     </div>
@@ -56,3 +59,5 @@
     </div>
 
 <% end %>
+</div>
+</div>
