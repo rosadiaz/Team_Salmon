@@ -55,11 +55,8 @@
           <div class="mb-2">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
           </div>
-        <% end %>
-
-      </form>
-    </div>
-
+      <% end %>
+    </form>
     <% if can? :crud, @quiz %>
       <div class=''>
         <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
