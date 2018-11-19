@@ -26,5 +26,9 @@ class Ability
       @taken = Result.where(user_id: user.id).where(quiz_id: quiz.id)
       user.persisted? && user != quiz.user && @taken == []
     end
+
+    can(:crud, Result) do |result|
+      user == result.user
+    end
   end
 end

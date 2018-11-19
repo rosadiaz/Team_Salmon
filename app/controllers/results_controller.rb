@@ -21,7 +21,9 @@ class ResultsController < HomeController
     def show
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
-        @leaderboard_score = User.find(current_user.id).results.sum(:score)
+        if current_user
+            @leaderboard_score = User.find(current_user.id).results.sum(:score)
+        end 
     end
 
     private

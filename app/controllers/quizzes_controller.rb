@@ -11,6 +11,7 @@ class QuizzesController < ApplicationController
     @quiz.user = current_user
     
     if @quiz.save
+      flash[:success] = "You created a quiz! Now add some questions."
       if @quiz.user.present?
         UserMailer.notify_quiz_created(@quiz).deliver_later(wait: 10.seconds)
       end
@@ -43,6 +44,9 @@ class QuizzesController < ApplicationController
     if @quiz.update quiz_params
       redirect_to quiz_path(@quiz.id)
     else
+      if @quiz.errors.present?
+        flash.now[:danger] = @quiz.errors.full_messages.join(" • ")
+      end 
       render :edit
     end
   end
