@@ -61,5 +61,9 @@ nav a {
   color: #F4F7F5;
 }
 
-@import "bootstrap";
-@import "main";
+nav a:hover {
+  color: pink;
+}
+
+ @import "bootstrap";
+ @import "main";

@@ -16,9 +16,14 @@
               <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q), :class=>"text-dark" %></h5>
             </div>
             <div class="card-body bg-created-light"> 
-   <%# TIMES TAKEN AND HIGHEST SCORE NOT IMPLEMENTED YET %>             
               <p class="card-text">Times taken: <%= q.quiz_taker.count %> attempts</p>  
-              <p class="card-text">Highest score: <%= q.quiz_taker.maximum(:score) %> points</p>  
+              <p class="card-text">Highest score: 
+                <% if q.quiz_taker == [] %>
+                  No scores yet!
+                <% else %>
+                  <%= q.quiz_taker.maximum(:score) %> points
+                <% end %>
+              </p>  
             </div>
           </div>
         </div>    
