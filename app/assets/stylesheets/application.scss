@@ -32,7 +32,13 @@ $theme-colors: (
   // "warning":    #,
   // "danger":     #,
   "light":      #F6F4F3,
-  "dark":       #3F5688
+  "dark":       #3F5688,
+  "all-dark":#dd5357,
+  "all-light":#f4c3c5,
+  "taken-dark": #ed9a9c,
+  "taken-light": #f0c0c1,
+  "created-dark": #a17eaf,
+  "created-light": #ead7f2
 );
 
 #quiz-index .card {
@@ -47,5 +53,9 @@ $theme-colors: (
   text-align: center;
 }
 
- @import "bootstrap";
- @import "main";
+.card-shadow {
+  box-shadow: 2px 4px 18px #888888
+}
+
+@import "bootstrap";
+@import "main";
