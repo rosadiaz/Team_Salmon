@@ -36,8 +36,8 @@
                   <%= link_to("ALL QUIZZES", quizzes_path, class: "dropdown-item")%>
                   <% if user_signed_in? %>
                     <%= link_to("TAKEN QUIZZES", completed_quizzes_path, class: "dropdown-item")%>
-                    <%= link_to("CREATED QUIZZES", created_quizzes_path(current_user), class: "dropdown-item")%>
-                    <%= link_to("NEW QUIZ", new_quiz_path, class: "dropdown-item")%>
+                    <%= link_to("YOUR QUIZZES", created_quizzes_path(current_user), class: "dropdown-item")%>
+                    <%= link_to("MAKE NEW QUIZ", new_quiz_path, class: "dropdown-item")%>
                   <% end %>
                 </div>
               </div>
