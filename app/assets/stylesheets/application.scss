@@ -87,5 +87,9 @@ nav a:hover {
   color: pink;
 }
 
- @import "bootstrap";
- @import "main";
+.navbar-brand > img {
+  max-height: 40px;
+}
+
+@import "bootstrap";
+@import "main";
