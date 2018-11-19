@@ -5,6 +5,7 @@ module QuizzesHelper
   end
 
   def add_card_type_class(id)
+    if !current_user then return "all" end
     quiz_taken_ids = current_user.quiz_taken.ids
     quiz_created_ids = current_user.quizzes.ids
     if quiz_taken_ids.include?(id) then return "taken" end
