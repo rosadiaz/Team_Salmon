@@ -19,7 +19,7 @@
             <div class="card-body bg-taken-light">          
               <p class="card-text"><%= q.description.slice(0, 100)%>...</p>  
               <small class="text-muted">
-                Score: <%= @taken_quizzes.find_by(quiz_id: q.id).score %> / 
+                Score: <%= @taken_quizzes.find_by(quiz_id: q.id).score %> / <%= Quiz.find(q.id).questions.length %>
               </small>      
             </div>
           </div>

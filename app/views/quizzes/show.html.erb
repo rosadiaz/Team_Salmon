@@ -60,6 +60,10 @@
           <div class="mb-2">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
           </div>
+          <% elsif !(can? :crud, @quiz) %>
+            <div class="mb-4 d-flex justify-content-center" style="width: 100%; height: 50%;">
+              <%= link_to 'Cannot Retake Quizzes', quizzes_path, class: 'btn btn-warning' %>
+            </div>
       <% end %>
     </form>
     <% if can? :crud, @quiz %>
