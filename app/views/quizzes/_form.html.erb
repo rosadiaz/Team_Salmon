@@ -13,7 +13,9 @@
       <div class="d-flex">
         <div>
           <%= f.submit "Save", class: "btn btn-primary m-2" %>
+        <% if @quiz.persisted?%>
           <%= link_to("Cancel",  quiz_path(@quiz), class: "btn btn-secondary m-2")%>
+        <% end %>
         </div>
         <% if @quiz.persisted? %>
           <div class="ml-auto">
