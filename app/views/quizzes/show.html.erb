@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 <div class="card">
   <div class="card-body">
     <h1 class="card-title"><%= @quiz.title %></h1>
     <p class="card-text"><%= @quiz.description %></p>
     <p class="card-text">By: <%= @quiz.user.nickname %></p>
+=======
+<div class="d-flex justify-content-center">
+  <div class="col-md-8">
+    <div class="mb-2">
+      <h2 class=" text-center"><%= @quiz.title %></h2>
+      <p class=""><%= @quiz.description %></p>
+      <small >Created by: <%= @quiz.user.nickname.capitalize %></small>
+    </div>
+    
+>>>>>>> origin/integration
     <% if can? :crud, @quiz %>
       <div class="form-group">
         <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
@@ -36,6 +47,7 @@
               </div>
             <% end %>  
           </div>
+<<<<<<< HEAD
         </div>
       <% end %>
       <% if can? :take, @quiz %>
@@ -47,5 +59,36 @@
     <% if can? :crud, @quiz %>
       <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
     <% end %>
+=======
+
+          <% if can? :crud, @quiz %>
+            <div class="mb-2">
+              <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary btn-sm")%>
+              <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary btn-sm") %>
+            </div>
+          <% end %>          
+        <% end %>
+
+        <% if can? :take, @quiz %>
+          <% if @quiz.questions.length > 0 %>
+            <input type="submit" value='Submit Answers' class='btn btn-primary'>
+          <% end %>
+        <% elsif !(can? :crud, @quiz) %>
+          <%= link_to 'Cannot Retake Quizzes', quizzes_path, class: 'btn btn-warning' %>
+        <% end %>
+      </form>
+    </div>
+    <br>
+    
+    <% if can? :crud, @quiz %>
+     <div>
+       <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
+     </div>
+     <div>
+       <%= link_to("Done", created_quizzes_path(current_user), class: "btn btn-info mt-2")%>
+     </div>
+   <% end %>
+
+>>>>>>> origin/integration
   </div>
 </div>

@@ -1,5 +1,4 @@
 class QuizzesController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
   before_action :find_quiz, only: [:show, :edit, :update, :destroy]
 
@@ -12,21 +11,29 @@ class QuizzesController < ApplicationController
     @quiz.user = current_user
     
     if @quiz.save
+      if @quiz.user.present?
+        UserMailer.notify_quiz_created(@quiz).deliver_later(wait: 10.seconds)
+      end
       redirect_to quiz_path(@quiz.id)
     else
       if @quiz.errors.present?
-        flash.now[:danger] = @quiz.errors.full_messages.join(" · ")
+        flash.now[:danger] = @quiz.errors.full_messages.join(" • ")
       end 
       render :new
     end
   end
 
   def show
+    @taken = Result.where(user_id: current_user.id).where(quiz_id: @quiz.id)
+    if @taken != []
+      flash.now[:danger] = "You've already taken this quiz!"
+    end
     @result = Result.new
   end
   
   def index
-    @quizzes = Quiz.all.order(created_at: :desc)
+    quizzes = Quiz.all.order(created_at: :desc)
+    @valid_quizzes = quizzes.select{|quiz| quiz.questions.length>0}
   end
 
   def edit
@@ -57,5 +64,4 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title, :description)
   end
-
 end
