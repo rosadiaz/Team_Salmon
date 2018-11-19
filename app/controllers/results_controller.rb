@@ -21,6 +21,9 @@ class ResultsController < HomeController
     def show
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
+        @current_user_id = current_user || 0
+        @lb_results = @quiz.results.group(:user_id).limit(20).sum(:score)
+        @lb_results = Hash[@lb_results.sort_by{|key, val| val}.reverse]
         if current_user
             @leaderboard_score = User.find(current_user.id).results.sum(:score)
         end 

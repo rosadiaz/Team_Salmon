@@ -5,6 +5,7 @@
     <p><%= ((@result.score.to_f/@max_score.to_f) * 100).round(2) %>%</p>
     <p>Points Earned: <%=@result.score%></p>
     <p>Total Leaderboard Points: <%=@leaderboard_score%></p>
+    <%= render 'quiz_leaderboard' %>
   <% else %>
     <% flash.now[:danger] = "You cannot view this page!" %>
   <% end %>
