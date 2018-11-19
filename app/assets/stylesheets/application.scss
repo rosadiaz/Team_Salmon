@@ -25,14 +25,14 @@
 // );
 
 $theme-colors: (
-  "primary":    #A287B4,
-  "secondary":  #55B8E6,
-  // "success":    #,
-  "info":       #EFD232,
-  // "warning":    #,
-  // "danger":     #,
-  "light":      #F6F4F3,
-  "dark":       #3F5688,
+  "primary":   #BD485A,
+  "secondary":  #B47796,
+  "success":    #6e9053,
+  "info":       #9B8EA6,
+  "warning":    #eb801b,
+  "danger":     #f44336,
+  "light":      #F4F7F5,
+  "dark":       #420C0E,
   "all-dark":#dd5357,
   "all-light":#f4c3c5,
   "taken-dark": #ed9a9c,
@@ -55,6 +55,10 @@ $theme-colors: (
 
 .card-shadow {
   box-shadow: 2px 4px 18px #888888
+}
+
+nav a {
+  color: #F4F7F5;
 }
 
 @import "bootstrap";
