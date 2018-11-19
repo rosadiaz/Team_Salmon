@@ -6,7 +6,6 @@
     <% if can? :crud, @quiz %>
       <div class="form-group">
         <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
-        <%= link_to('Delete Quiz', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary", data: {confirm: "Are you sure?"}) %>
       </div>
     <% end %>
     <form action="/quizzes/<%= @quiz.id %>/results" method="POST">
@@ -16,7 +15,7 @@
             <h5 class="card-text"><%= q.question %></h5>
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">          
             <div class="form-row px-5">
-              <input class="form-check-input" type="radio" id="opt0" name='<%= q.id %>' value=0>
+              <input class="form-check-input" type="radio" id="opt0" name='<%= q.id %>' required value=0>
               <label class="form-check-label" for="opt0"><%= q.option0 %></label>
             </div>
             <div class="form-row px-5">
@@ -34,7 +33,6 @@
             <% if can? :crud, @quiz %>
               <div class="mt-2">
                 <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
-                <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
               </div>
             <% end %>  
           </div>
