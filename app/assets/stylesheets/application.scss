@@ -25,14 +25,25 @@
 // );
 
 $theme-colors: (
-  "primary":    #A287B4,
-  "secondary":  #55B8E6,
-  // "success":    #,
-  "info":       #EFD232,
-  // "warning":    #,
-  // "danger":     #,
-  "light":      #F6F4F3,
-  "dark":       #3F5688
+<<<<<<< HEAD
+"primary":   #BD485A,
+"secondary":  #420C0E,
+"success":    #6e9053,
+"info":       #9B8EA6,
+"warning":    #eb801b,
+"danger":     #f44336,
+"light":      #F4F7F5,
+"dark":       #0F0813
+=======
+  "primary":   #BD485A,
+  "secondary":  #B47796,
+  "success":    #6e9053,
+  "info":       #9B8EA6,
+  "warning":    #eb801b,
+  "danger":     #f44336,
+  "light":      #F4F7F5,
+  "dark":       #420C0E
+>>>>>>> origin/integration
 );
 
 #quiz-index .card {
@@ -45,6 +56,10 @@ $theme-colors: (
 
 #quiz-index .card-title {
   text-align: center;
+}
+
+nav a {
+  color: #F4F7F5;
 }
 
  @import "bootstrap";
