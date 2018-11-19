@@ -45,23 +45,25 @@
           <% end %>          
         <% end %>
 
-
         <% if can? :take, @quiz %>
-          <div class="mb-2">
+          <% if @quiz.questions.length > 0 %>
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
-          </div>
+          <% end %>
+        <% elsif !(can? :crud, @quiz) %>
+          <%= link_to 'Cannot Retake Quizzes', quizzes_path, class: 'btn btn-warning' %>
         <% end %>
-
       </form>
     </div>
-
+    <br>
+    
     <% if can? :crud, @quiz %>
-      <div class=''>
-        <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
-      </div>
+     <div>
+       <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
+     </div>
+     <div>
+       <%= link_to("Done", created_quizzes_path(current_user), class: "btn btn-info mt-2")%>
+     </div>
+   <% end %>
 
-    <% end %>
-
-    <%= link_to("Done", quizzes_path, class: "btn btn-info mt-2")%>
   </div>
 </div>
