@@ -1,67 +1,53 @@
-<div class="d-flex justify-content-center">
-  <div class="col-md-8">
-    <div class="mb-2">
-      <h2 class=" text-center"><%= @quiz.title %></h2>
-      <p class=""><%= @quiz.description %></p>
-      <small >Created by: <%= @quiz.user&.first_name %></small>
-    </div>
-    
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title"><%= @quiz.title %></h1>
+    <p class="card-text"><%= @quiz.description %></p>
+    <p class="card-text">By: <%= @quiz.user.nickname %></p>
     <% if can? :crud, @quiz %>
       <div class="form-group">
-        <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary btn-sm")%>
-        <%= link_to('Delete Quiz', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary btn-sm", data: {confirm: "Are you sure?"}) %>
+        <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary")%>
+        <%= link_to('Delete Quiz', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary", data: {confirm: "Are you sure?"}) %>
       </div>
     <% end %>
-
-    <div class="">
-      <form  action="/quizzes/<%= @quiz.id %>/results" method="POST">
-        <% @quiz.questions.each do |q| %>
-          <div class="form-group " id='answer-options'>
-            <label><strong><%= q.question %></strong></label><br>
+    <form action="/quizzes/<%= @quiz.id %>/results" method="POST">
+      <% @quiz.questions.each do |q| %>
+        <div class="card shadow mb-4">
+          <div class="card-body form-group" id='answer-options'>
+            <h5 class="card-text"><%= q.question %></h5>
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">          
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt0" name='<%= q.id %>' value=0>
-              <label class="form-check-label ml-4 " for="opt0"><%= q.option0 %></label>
+            <div class="form-row px-5">
+              <input class="form-check-input" type="radio" id="opt0" name='<%= q.id %>' value=0>
+              <label class="form-check-label" for="opt0"><%= q.option0 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt1" name='<%= q.id %>' value=1>
-              <label class="form-check-label ml-4" for="opt1"><%= q.option1 %></label>
+            <div class="form-row px-5">
+              <input class="form-check-input" type="radio" id="opt1" name='<%= q.id %>' value=1>
+              <label class="form-check-label" for="opt1"><%= q.option1 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt2" name='<%= q.id %>' value=2'>
-              <label class="form-check-label ml-4" for="opt2"><%= q.option2 %></label>
+            <div class="form-row px-5">
+              <input class="form-check-input" type="radio" id="opt2" name='<%= q.id %>' value=2'>
+              <label class="form-check-label" for="opt2"><%= q.option2 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt3" name='<%= q.id %>' value=3'>
-              <label class="form-check-label ml-4" for="opt3"><%= q.option3 %></label>
+            <div class="form-row px-5">
+              <input class="form-check-input" type="radio" id="opt3" name='<%= q.id %>' value=3'>
+              <label class="form-check-label" for="opt3"><%= q.option3 %></label>
             </div>
+            <% if can? :crud, @quiz %>
+              <div class="mt-2">
+                <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
+                <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary") %>
+              </div>
+            <% end %>  
           </div>
-
-          <% if can? :crud, @quiz %>
-            <div class="mb-2">
-              <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary btn-sm")%>
-              <%= link_to('Delete', quiz_question_path(@quiz, q), method: :delete, class: "btn btn-outline-primary btn-sm") %>
-            </div>
-          <% end %>          
-        <% end %>
-
-
-        <% if can? :take, @quiz %>
-          <div class="mb-2">
+        </div>
+      <% end %>
+      <% if can? :take, @quiz %>
+          <div class="mb-4">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
           </div>
-        <% end %>
-
-      </form>
-    </div>
-
+      <% end %>
+    </form>
     <% if can? :crud, @quiz %>
-      <div class=''>
-        <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
-      </div>
-
+      <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
     <% end %>
-
-
   </div>
 </div>
