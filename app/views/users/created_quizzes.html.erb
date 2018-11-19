@@ -11,14 +11,19 @@
     <div class ="row justify-content-md-center">
       <% @created_quiz.each do |q| %>
         <div class="col-lg-4 col-sm-12 col-md-6">
-          <div class="card m-2 container-fluid p-0">
-            <div class="card-header">
-              <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q) %></h5>
+          <div class="card m-2 container-fluid p-0 card-shadow">
+            <div class="card-header bg-created-dark">
+              <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q), :class=>"text-dark" %></h5>
             </div>
-            <div class="card-body"> 
-   <%# TIMES TAKEN AND HIGHEST SCORE NOT IMPLEMENTED YET %>             
+            <div class="card-body bg-created-light"> 
               <p class="card-text">Times taken: <%= q.quiz_taker.count %> attempts</p>  
-              <p class="card-text">Highest score: <%= q.quiz_taker.maximum(:score) %> points</p>  
+              <p class="card-text">Highest score: 
+                <% if q.quiz_taker == [] %>
+                  No scores yet!
+                <% else %>
+                  <%= q.quiz_taker.maximum(:score) %> points
+                <% end %>
+              </p>  
             </div>
           </div>
         </div>    
