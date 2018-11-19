@@ -5,9 +5,11 @@
 </div>
 <div class="card border border-dark">
   <div class="card-body">
-    <h3 class="card-title text-dark"><%= @quiz.title %></h3>
-    <p class="card-text text-dark m-0 ml-2"><%= @quiz.description %></p>
-    <em><small class="card-text text-dark ml-2">By: <%= @quiz.user.nickname %></small></em>
+    <h3 class="text-center card-title text-dark"><%= @quiz.title %></h3>
+    <p class="text-center card-text text-dark m-0"><%= @quiz.description %></p>
+    <div class="mb-5 text-center">
+      <em><small class="card-text text-dark">By: <%= @quiz.user.nickname %></small></em>
+    </div>
     <% if can? :crud, @quiz %>
       <div class="form-group ml-2 mt-2">
         <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary btn-sm")%>
@@ -21,21 +23,21 @@
           <div class="card-body m-0 form-group" id='answer-options'>
             <h5 class="card-text"><%= q.question %></h5>
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">          
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt0" name='<%= q.id %>' value=0>
-              <label class="form-check-label ml-4 " for="opt0"><%= q.option0 %></label>
+            <div class="form-row ml-2">
+              <input class="m-1" type="radio" id="opt0-<%=q.id%>" name='<%= q.id %>' value=0>
+              <label class="form-check-label ml-4 " for="opt0-<%=q.id%>"><%= q.option0 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt1" name='<%= q.id %>' value=1>
-              <label class="form-check-label ml-4" for="opt1"><%= q.option1 %></label>
+            <div class="form-row ml-2">
+              <input class="m-1" type="radio" id="opt1-<%=q.id%>" name='<%= q.id %>' value=1>
+              <label class="form-check-label ml-4" for="opt1-<%=q.id%>"><%= q.option1 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt2" name='<%= q.id %>' value=2'>
-              <label class="form-check-label ml-4" for="opt2"><%= q.option2 %></label>
+            <div class="form-row ml-2">
+              <input class="m-1" type="radio" id="opt2-<%=q.id%>" name='<%= q.id %>' value=2'>
+              <label class="form-check-label ml-4" for="opt2-<%=q.id%>"><%= q.option2 %></label>
             </div>
-            <div class="form-row">
-              <input class="form-check-input m-2 " type="radio" id="opt3" name='<%= q.id %>' value=3'>
-              <label class="form-check-label ml-4" for="opt3"><%= q.option3 %></label>
+            <div class="form-row ml-2">
+              <input class="m-1" type="radio" id="opt3-<%=q.id%>" name='<%= q.id %>' value=3'>
+              <label class="form-check-label ml-4" for="opt3-<%=q.id%>"><%= q.option3 %></label>
             </div>
             <% if can? :crud, @quiz %>
               <div class="mt-2">
@@ -57,7 +59,7 @@
 
 
         <% if can? :take, @quiz %>
-          <div class="mb-2">
+          <div class="d-flex justify-content-center">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
           </div>
           <% elsif !(can? :crud, @quiz) %>
