@@ -1,19 +1,24 @@
-<div class="card">
+
+<h1 class="text-center text-primary">QuizzBuzz!</h1>
+<div class="text-center">
+<%= image_tag "quiz#{rand(4)}.png", height: "100em" %>
+</div>
+<div class="card border border-dark">
   <div class="card-body">
-    <h1 class="card-title"><%= @quiz.title %></h1>
-    <p class="card-text"><%= @quiz.description %></p>
-    <p class="card-text">By: <%= @quiz.user.nickname %></p>
+    <h3 class="card-title text-dark"><%= @quiz.title %></h3>
+    <p class="card-text text-dark m-0 ml-2"><%= @quiz.description %></p>
+    <em><small class="card-text text-dark ml-2">By: <%= @quiz.user.nickname %></small></em>
     <% if can? :crud, @quiz %>
-      <div class="form-group">
+      <div class="form-group ml-2 mt-2">
         <%= link_to('Edit Quiz', edit_quiz_path(@quiz), class: "btn btn-outline-primary btn-sm")%>
         <%= link_to('Delete Quiz', quiz_path(@quiz), method: :delete, class: "btn btn-outline-primary btn-sm", data: {confirm: "Are you sure?"}) %>
       </div>
     <% end %>
     <form action="/quizzes/<%= @quiz.id %>/results" method="POST">
       <% @quiz.questions.each do |q| %>
-      <div class="d-flex justify-content-center" style="width: 100%; height: 50%;">
-        <div class="card shadow mb-4" style="width: 65%">
-          <div class="card-body m-0form-group" id='answer-options'>
+      <div class="d-flex justify-content-center" style="max-width: 1000px; height: 50%; margin: auto">
+        <div class="card bg-primary text-light shadow mb-4" style="width: 65%">
+          <div class="card-body m-0 form-group" id='answer-options'>
             <h5 class="card-text"><%= q.question %></h5>
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">          
             <div class="form-row">
@@ -34,7 +39,7 @@
             </div>
             <% if can? :crud, @quiz %>
               <div class="mt-2">
-                <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary")%>
+                <%= link_to('Edit', edit_quiz_question_path(@quiz, q), class: "btn btn-outline-primary bg-light")%>
               </div>
             <% end %>  
           </div>
@@ -55,14 +60,17 @@
           <div class="mb-2">
             <input type="submit" value='Submit Answers' class='btn btn-primary'>
           </div>
+          <% elsif !(can? :crud, @quiz) %>
+            <div class="mb-4 d-flex justify-content-center" style="width: 100%; height: 50%;">
+              <%= link_to 'Cannot Retake Quizzes', quizzes_path, class: 'btn btn-warning' %>
+            </div>
       <% end %>
     </form>
     <% if can? :crud, @quiz %>
-      <div class=''>
+      <div class="mb-4 d-flex justify-content-center" style="width: 100%; height: 50%;">
         <%= link_to 'Add Questions', new_quiz_question_path(@quiz.id), class: 'btn btn-primary' %>
-      
+        <%= link_to "Done", quizzes_path, class: "btn btn-info ml-2" %>
       </div>
-
     <% end %>
   </div>
 </div>
