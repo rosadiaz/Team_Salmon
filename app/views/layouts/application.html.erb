@@ -48,7 +48,7 @@
           </ul>  
           <% if user_signed_in? %>       
             <div class="navbar-nav ml-auto d-flex">         
-              <%= link_to("Hello #{current_user.nickname}", user_path(current_user), class: "nav-link") %>
+              <%= link_to("Hello #{current_user.nickname.capitalize}", user_path(current_user), class: "nav-link") %>
               <%= link_to("LOG OUT", sessions_path, method: :delete, class: "nav-link")%>
             </div>
           <% else %>
