@@ -1,5 +1,4 @@
 class QuizzesController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
   before_action :find_quiz, only: [:show, :edit, :update, :destroy]
 
@@ -25,6 +24,10 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @taken = Result.where(user_id: current_user.id).where(quiz_id: @quiz.id)
+    if @taken != []
+      flash.now[:danger] = "You've already taken this quiz!"
+    end
     @result = Result.new
   end
   
@@ -61,5 +64,4 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title, :description)
   end
-
 end

@@ -1,8 +1,6 @@
 class ResultsController < HomeController
-
     before_action :find_quiz, only: [ :create, :show ]
-    before_action :authorize_user!, only: [ :create ]
-  
+
     def create
         @score = helpers.calculate_score(params)
 
@@ -19,7 +17,7 @@ class ResultsController < HomeController
             redirect_to quizzes_path
         end
     end
-    
+
     def show
         @result = Result.find params[:id]
         @max_score = @quiz.questions.length
@@ -30,12 +28,4 @@ class ResultsController < HomeController
     def find_quiz
         @quiz = Quiz.find params[:quiz_id]
     end
-
-    def authorize_user!
-        unless can?(:take, @quiz)
-            flash[:danger] = "Can't take your own quiz"
-            redirect_to quiz_path(@quiz)
-        end
-    end 
-
 end
