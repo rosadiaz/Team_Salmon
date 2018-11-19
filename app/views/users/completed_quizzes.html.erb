@@ -1,6 +1,6 @@
 
 <main class="mx-4">
-<span><b>Total score: <%= @current_user_total_score %></b></span> 
+<span><b>Leaderboard score: <%= @current_user_total_score %></b></span> 
 
 <% if @completed_quiz == [] %>
   <div class="row justify-content-center">
@@ -18,7 +18,9 @@
             </div>
             <div class="card-body">          
               <p class="card-text"><%= q.description.slice(0, 100)%>...</p>  
-              <small class="text-muted">Score: <%= @taken_quizzes.find_by(quiz_id: q.id).score %></small>      
+              <small class="text-muted">
+                Score: <%= @taken_quizzes.find_by(quiz_id: q.id).score %> / 
+              </small>      
             </div>
           </div>
         </div>    
