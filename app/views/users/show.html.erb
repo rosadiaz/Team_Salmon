@@ -2,17 +2,22 @@
 <div class="mx-2">
 <h3> Welcome <%= @user.nickname.titleize %>!</h3>
 <br>
-    <button type="button" class="btn btn-primary">
-    Quizzes completed <span class="badge badge-light"> <%=@total_taken_quizzes%></span>
-    </button>
 
-    <button type="button" class="btn btn-secondary">
-    Quizzes created <span class="badge badge-light"><%=@total_created_quizzes %></span>
-    </button>
+<div class="card" >
+  <div class="card-body">
+    <h4 class="card-title"><%= @user.first_name.titleize %> <%= @user.last_name.titleize %></h4>
+    <p class="card-text"> Username: <%= @user.nickname.titleize %></p>
+    <p class="card-text"> Email: <%= @user.email %></p>
 
-    <button type="button" class="btn btn-info">
-    Total points <span class="badge badge-light"><%= @total_score %> </span>
-    </button>
+    <a href="<%=completed_quizzes_path%>"
+    class="btn btn-primary"> Quizzes completed <span class="badge badge-light"> <%=@total_taken_quizzes%></span></a>
+
+    <a href="<%=created_quizzes_path(current_user)%>"
+    class="btn btn-secondary m-2"> Quizzes created <span class="badge badge-light"> <%=@total_created_quizzes %></span></a>
+
+    <a href="<%=leaderboard_path%>"
+    class="btn btn-info"> Total Points <span class="badge badge-light"> <%=@total_score %></span></a>
+  </div>
 </div>
 
 <br>
