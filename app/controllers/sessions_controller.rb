@@ -21,7 +21,8 @@ end
 
 def destroy 
     session[:user_id] =nil 
-    redirect_to root_path, notice: "Signed out!"
+    flash[:success] = "You've signed out!"
+    redirect_to root_path
 end 
 
 private 
