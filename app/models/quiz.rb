@@ -6,7 +6,7 @@ class Quiz < ApplicationRecord
 
   validates :title, presence: true, 
                     uniqueness: true,
-                    length: { maximum: 75}
+                    length: { maximum: 60}
   validates :description, presence: true,
-                          length: { minimum: 25 }
+                          length: { minimum: 20 }
 end
