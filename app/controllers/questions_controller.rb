@@ -8,7 +8,6 @@ class QuestionsController < ApplicationController
     end
 
     def create
-
         @question = Question.new question_params
         @question.quiz = @quiz
 
@@ -17,7 +16,6 @@ class QuestionsController < ApplicationController
             redirect_to quiz_path(@quiz)
         else
             render :new
-            # FLASH ERROR
         end
     end
 

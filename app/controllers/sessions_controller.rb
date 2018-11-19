@@ -12,7 +12,7 @@ def create
         redirect_to quizzes_path
 
     else 
-        flash.now[:danger] = "Wrong credz, loser"
+        flash.now[:danger] = "Incorrect Email or Password. Try again."
         render :new     
     end 
 end 
@@ -20,8 +20,8 @@ end
 
 
 def destroy 
-    session[:user_id] =nil 
-    flash[:success] = "You've signed out!"
+    session[:user_id] =nil
+    flash[:success] = "Signed out!"
     redirect_to root_path
 end 
 

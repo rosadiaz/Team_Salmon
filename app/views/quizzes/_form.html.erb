@@ -1,12 +1,6 @@
 <div class="row d-flex justify-content-center">
   <div class="col-md-6">
-    <%= form_for(@quiz) do |f|%>
-      <% if @quiz.errors.present? %>
-      <p> 
-        <%= @quiz.errors.full_messages.join(',') %>
-      </p>
-      <% end %>
-  
+    <%= form_for(@quiz) do |f|%>  
       <div class="form-group mx-2">
         <%= f.label :title %>
         <%= f.text_field :title, class: "form-control " %>
@@ -16,8 +10,7 @@
         <%= f.text_area :description, class: "form-control " %>
       </div>
       <%= f.submit class: "btn btn-outline-primary mx-2" %>
-    </div>
-
+  <% end %>
   </div>
+</div>
   
-<% end %>
