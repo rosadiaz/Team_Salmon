@@ -33,12 +33,12 @@ $theme-colors: (
   "danger":     #f44336,
   "light":      #F4F7F5,
   "dark":       #420C0E,
-  "all-dark":#dd5357,
-  "all-light":#f4c3c5,
-  "taken-dark": #ed9a9c,
-  "taken-light": #f0c0c1,
-  "created-dark": #a17eaf,
-  "created-light": #ead7f2
+  "all-dark":#be4759,
+  "all-light":#be47596e,
+  "taken-dark": #d39ba9,
+  "taken-light": #d39ba948,
+  "created-dark": #9B8EA6,
+  "created-light": rgba(155, 142, 166, 0.349),
 );
 
 #quiz-index .card {

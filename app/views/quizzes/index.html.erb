@@ -6,7 +6,7 @@
       <div class="col-lg-4 col-sm-12 col-md-6" id="<%= q.id %>">
         <div class="card m-2 container-fluid p-0 card-shadow">
           <div class="card-header bg-<%= add_card_type_class(q.id) %>-dark" >
-            <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q), :class=>"text-dark" %></h5>
+            <h5 class="card-title"><%= link_to q.title.slice(0, 50), quiz_path(q) , :class=>"text-light"%></h5>
           </div>
           <div class="card-body bg-<%= add_card_type_class(q.id) %>-light">          
             <p class="card-text"><%= q.description.slice(0, 100)%>...</p> 
